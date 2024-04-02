@@ -1,0 +1,30 @@
+name : I am testing Github actions
+on :
+   push :
+     branches :
+        - master
+        - stage
+   paths :
+     - testing/**
+   pull_request:
+     branches :
+        - master
+     paths :
+       - testing/**
+
+jobs :
+   bash_script :
+     name : " Run the simple bash script"
+     runs-on : ubuntu-latest
+     defaults :
+        run :
+           shell : bash
+     steps :
+        name : checkout the source code
+        uses : actions/checkout@v4
+
+        name : chnage the permissions of the bash script for executing
+        run : chmod +x bash.sh
+
+        name : Run the bash script
+        run : ./bash.sh
