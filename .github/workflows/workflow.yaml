@@ -32,12 +32,12 @@ jobs :
          id : nocondition
          run : ./testing/bash2.sh
 
-       - name : Run the bash script
+       - name : Run the bash script if push on stage
          id : executing
          if : github.ref == 'refs/heads/stage' && github.event_name =='push'
          run : chmod +x testing/bash.sh;./testing/bash.sh
 
-       - name : Running this only on push on master
+       - name : Run the bash script if push on master
          id : mastering
          if : github.ref == 'refs/heads/master' && github.event_name =='push'
          run : chmod +x testing/bash1.sh;./testing/bash1.sh
