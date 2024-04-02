@@ -25,8 +25,8 @@ jobs :
 
        - name : chnage the permissions of the bash script for executing
          id : permissions
-         run : chmod +x bash.sh
+         run : chmod +x testing/bash.sh
 
        - name : Run the bash script
          id : executing
-         run : ./bash.sh
+         run : ./testing/bash.sh
