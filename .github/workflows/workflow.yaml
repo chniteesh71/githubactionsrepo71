@@ -4,6 +4,7 @@ on :
      branches :
         - master
         - stage
+        - wolf
      paths :
      - testing/**
    pull_request:
@@ -25,13 +26,18 @@ jobs :
 
        - name : change the permissions of the bash script for executing
          id : permissions
-         run : chmod +x testing/bash.sh;chmod +x testing/bash1.sh
+         run : chmod +x testing/bash2.sh
+        
+       - name : different branch
+         id : nocondition
+         run : ./testing/bash2.sh
 
        - name : Run the bash script
          id : executing
-         run : ./testing/bash.sh
+         if : github.ref == 'refs/heads/stage' && github.event_name =='push'
+         run : chmod +x testing/bash.sh;./testing/bash.sh
 
        - name : Running this only on push on master
          id : mastering
          if : github.ref == 'refs/heads/master' && github.event_name =='push'
-         run : ./testing/bash1.sh
+         run : chmod +x testing/bash1.sh;./testing/bash1.sh
