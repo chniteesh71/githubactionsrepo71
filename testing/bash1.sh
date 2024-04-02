@@ -1,0 +1,10 @@
+echo "##################################"
+echo "testing the push on master branch"
+echo "##################################"
+echo "Event push triggered on master successfully"
+echo "##################################"
+echo "bash1.sh under testing executed successfully"
+echo "##################################"
+echo " please try again with some terraform files"
+echo "##################################"
+

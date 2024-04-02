@@ -23,10 +23,15 @@ jobs :
        - name : checkout the source code
          uses : actions/checkout@v4
 
-       - name : chnage the permissions of the bash script for executing
+       - name : change the permissions of the bash script for executing
          id : permissions
-         run : chmod +x testing/bash.sh
+         run : chmod +x testing/bash.sh;chmod +x testing/bash1.sh
 
        - name : Run the bash script
          id : executing
          run : ./testing/bash.sh
+
+       - name : Running this only on push on master
+         id : mastering
+         if : github.ref == 'refs/heads/master' && github.event_name =='push'
+         run : ./testing/bash1.sh
